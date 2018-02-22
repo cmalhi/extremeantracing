@@ -1,0 +1,16 @@
+.bar {
+  width: 500px;
+  height: 40px;
+  border: 1px solid black;
+  margin: auto;
+}
+
+.inner-bar {
+  width: 5%;
+  height: 100%;
+  background-color: green;
+}
+
+.progress {
+  font-size: 30px;
+}

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Card from './components/ant-card/card';
+import ButtonBar from './components/bar/button-bar';
+import ProgressBar from './components/bar/progress-bar';
 
 const sampleData = [
       {
@@ -41,6 +43,8 @@ class App extends Component {
     return (
       <div className="App">
         <Card name={sampleData[0].name} weight={sampleData[0].weight} color={sampleData[0].color} length={sampleData[0].length} />
+        <ButtonBar />
+        <ProgressBar />
       </div>
     );
   }
