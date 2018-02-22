@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Card from './components/ant-card/card';
-import ButtonBar from './components/bar/button-bar';
-import ProgressBar from './components/bar/progress-bar';
+import ButtonBar from './components/bar/button-bar/button-bar';
+import ProgressBar from './components/bar/progress-bar/progress-bar';
 
 const sampleData = [
       {
