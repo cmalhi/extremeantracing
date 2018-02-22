@@ -1,0 +1,7 @@
+@import url('https://fonts.googleapis.com/css?family=Grand+Hotel|Quicksand:300,400,500,700');
+
+body {
+  background-color: gray;
+  color: white;
+  font-family: 'Quicksand', cursive;
+}
