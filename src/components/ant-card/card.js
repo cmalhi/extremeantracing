@@ -1,18 +1,19 @@
 import React from 'react';
+import './card.css'
 
 const Card = (props) => {
   return ( 
-  	<div>
-  	  <div>name</div>
-      <div>{props.name}</div>
-      <div>name</div>
-      <div>{props.length}</div>
-      <div>name</div>
-      <div>{props.weight}</div>
-      <div>name</div>
-      <div>{props.color}</div>
-      <div>likelihood</div>
-      <div>0%</div>
+  	<div className="card-container">
+  	  <div className="title">name</div>
+      <div className="entry">{props.name}</div>
+      <div className="title">name</div>
+      <div className="entry">{props.length}</div>
+      <div className="title">name</div>
+      <div className="entry">{props.weight}</div>
+      <div className="title">name</div>
+      <div className="entry">{props.color}</div>
+      <div className="title">likelihood</div>
+      <div className="entry">0%</div>
      </div>
   );
 }

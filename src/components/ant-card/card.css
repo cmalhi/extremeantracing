@@ -1,0 +1,8 @@
+.card-container {
+  border: 1px solid black;
+}
+
+.title {
+  text-align: left;
+  font-size: 20px;
+}
