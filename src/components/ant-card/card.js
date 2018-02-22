@@ -2,7 +2,7 @@ import React from 'react';
 
 const Card = (props) => {
   return ( 
-    <h1>WHATS POPPIN WORLD</h1>
+     <h1>{props.name}</h1>
   );
 }
 
