@@ -36,6 +36,7 @@ class App extends Component {
 
   promisifyLikelihoodGeneration() {
   console.log('clicked')
+  this.setState({totalProgress: 15, progressState: 'in progress'})
   //create array of promises for promise.all
   var promises = [];
   this.state.ants.forEach((ant, i) => { 
@@ -57,7 +58,7 @@ class App extends Component {
       values = values.sort((a,b)=>{
         return a.likelihood < b.likelihood
       })
-      this.setState({ants: values})
+      this.setState({ants: values, totalProgress: 100, progressState: 'complete'})
     })
     .catch((error) => {
       console.log(error)
