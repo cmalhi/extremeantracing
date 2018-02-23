@@ -15,6 +15,8 @@ class App extends Component {
     super(props);
     this.state = {
       ants: [],
+      totalProgress: 5,
+      progressState: 'calculate',
     }
     this.fetch = this.fetch.bind(this);
     this.promisifyLikelihoodGeneration = this.promisifyLikelihoodGeneration.bind(this);
@@ -66,7 +68,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1>- Extreme Ant Racing -</h1>
-        <ButtonBar click={this.promisifyLikelihoodGeneration} />
+        <ButtonBar click={this.promisifyLikelihoodGeneration} totalProgress={this.state.totalProgress} progressState={this.state.progressState} />
         <AntList ants={this.state.ants} />
       </div>
     );
