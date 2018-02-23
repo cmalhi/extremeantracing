@@ -42,7 +42,6 @@ class App extends Component {
   let progressIncrease = 85 / this.state.ants.length;
 
   this.state.ants.forEach((ant, i) => { 
-
     // set data for progress bar and progress state 
     let newAntsProgress = [...this.state.ants];
     newAntsProgress[i]['progress'] = 20;
@@ -60,6 +59,8 @@ class App extends Component {
         newAnts[i]['progress'] = 100;
         newAnts[i]['progressState'] = 'complete';
         this.setState({ants: newAnts, totalProgress: this.state.totalProgress + progressIncrease})
+        
+        // resolve with progress and likelihood data
         return newAnts[i];
       })
     promises.push(pinkyPromise);
