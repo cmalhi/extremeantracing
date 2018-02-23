@@ -22,4 +22,11 @@
   margin-top: -55px;
   font-size: 30px;
   text-shadow: 1px 1px rgba(62,62,62, .2);
+  transition: all .2s ease-in;
+  transform: scale(1);
+}
+
+.button-title:hover {
+  transition: all .2s ease-in;
+  transform: scale(1.1);
 }

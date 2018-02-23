@@ -55,6 +55,7 @@ class App extends Component {
       .then((data)=>{
         // set likelihood and create progress state and percentage for individual ants
         let newAnts = this.state.ants;
+        let currentAnt;
         newAnts[i]['likelihood'] = Math.round(data * 100);
         newAnts[i]['progress'] = 100;
         newAnts[i]['progressState'] = 'complete';
@@ -69,9 +70,9 @@ class App extends Component {
   Promise.all(promises)
     .then((values) => {
       // sort by likelihood of win
-      values = values.sort((a,b)=>{
-        return a.likelihood < b.likelihood
-      })
+      // values = values.sort((a,b)=>{
+      //   return a.likelihood < b.likelihood
+      // })
       // update total progress
       this.setState({ants: values, totalProgress: 100, progressState: 'complete'})
     })
