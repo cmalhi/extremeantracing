@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './App.css';
-import Card from './components/ant-card/card/card';
 import ButtonBar from './components/bar/button-bar/button-bar';
 import { createApolloFetch } from 'apollo-fetch';
 import AntList from './components/ant-list/ant-list';
@@ -16,19 +15,25 @@ class App extends Component {
     this.state = {
       ants: [],
     }
+    this.fetch = this.fetch.bind(this);
   }
 
-  componentDidMount() {
+  fetch() {
     fetch({
       query: '{ ants { name weight length color }}',
     }).then(res => {
-      this.setState({ants: res.data.ants}, () => {console.log(this.state.ants)})
+      this.setState({ants: res.data.ants});
     });
+  }
+
+  componentDidMount() {
+    this.fetch();
   }
 
   render() {
     return (
       <div className="App">
+        <h1>Competitive Ant Racing</h1>
         <ButtonBar />
         <AntList ants={this.state.ants} />
       </div>
