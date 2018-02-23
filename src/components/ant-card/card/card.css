@@ -1,11 +1,16 @@
 .card-container {
+  height: 200px;
+  width: 720px;
   border: 1px solid black;
-}
-
-.title {
-  font-size: 20px;
+  border-radius: 5px;
+  padding: 20px;
+  margin: auto;
+  margin-bottom: 25px;
 }
 
 .name {
-  font-size: 32px;
+  font-size: 26px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid white;
 }
+

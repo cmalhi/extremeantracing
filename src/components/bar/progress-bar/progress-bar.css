@@ -1,8 +1,11 @@
 .bar {
-  width: 500px;
-  height: 40px;
+  width: 710px;
+  height: 10px;
   border: 1px solid black;
-  margin: auto;
+  border-radius: 5px;
+  padding: 3px;
+  margin-bottom: 10px;
+  margin-top: 15px;
 }
 
 .inner-bar {
