@@ -18,7 +18,7 @@ const Stats = (props) => {
       </div>
       <div>
         <div className="title">likelihood</div>   
-        <div className="entry">{props.likelihood}</div>
+        <div className="entry">{props.likelihood}%</div>
       </div>
     </div>
   );
