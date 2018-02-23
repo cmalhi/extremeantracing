@@ -8,7 +8,7 @@ const Card = (props) => {
   	<div className="card-container">
       <div className="name">{props.name}</div>
       <br />
-      <Stats name={props.name} weight={props.weight} length={props.length} color={props.color} likelihood={50}/>
+      <Stats name={props.name} weight={props.weight} length={props.length} color={props.color} likelihood={props.likelihood || 0} />
 	  <ProgressBar />
      </div>
   );

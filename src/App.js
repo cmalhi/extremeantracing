@@ -42,13 +42,12 @@ class App extends Component {
     })
       .then((data)=>{
         let newAnts = this.state.ants;
-        newAnts[i]['likelihood'] = data;
+        newAnts[i]['likelihood'] = Math.round(data * 100);
         console.log('Calculated likelihood of', newAnts[i].name, 'winning')
         this.setState({ants: newAnts});
-        return newAnts;
+        return newAnts[i];
       })
     promises.push(pinkyPromise);
-    console.log('ant order', ant.name)
   });
   
   Promise.all(promises)
@@ -56,7 +55,7 @@ class App extends Component {
       values = values.sort((a,b)=>{
         return a.likelihood < b.likelihood
       })
-      console.log('all calculations done \n', values)
+      this.setState({ants: values})
     })
     .catch((error) => {
       console.log(error)
