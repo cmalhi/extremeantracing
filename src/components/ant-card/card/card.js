@@ -9,7 +9,7 @@ const Card = (props) => {
       <div className="name">{props.name}</div>
       <br />
       <Stats name={props.name} weight={props.weight} length={props.length} color={props.color} likelihood={props.likelihood || 0} />
-	  <ProgressBar />
+	  <ProgressBar progress={props.progress} progressState={props.progressState}/>
      </div>
   );
 }

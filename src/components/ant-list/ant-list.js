@@ -12,6 +12,8 @@ const AntList = (props) => {
           color={ant.color} 
           weight={ant.weight}
           likelihood={ant.likelihood}
+          progress={ant.progress}
+          progressState={ant.progressState}
         />
       </div>
     )

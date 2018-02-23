@@ -38,7 +38,8 @@ class App extends Component {
   console.log('clicked')
   this.setState({totalProgress: 15, progressState: 'in progress'})
   //create array of promises for promise.all
-  var promises = [];
+  let promises = [];
+  let progressIncrease = 85 / this.state.ants.length
   this.state.ants.forEach((ant, i) => { 
     const pinkyPromise = new Promise((resolve, reject) => {
       generateAntWinLikelihoodCalculator()(resolve);
@@ -46,7 +47,8 @@ class App extends Component {
       .then((data)=>{
         let newAnts = this.state.ants;
         newAnts[i]['likelihood'] = Math.round(data * 100);
-        console.log('Calculated likelihood of', newAnts[i].name, 'winning')
+        newAnts[i]['progress'] = 100;
+        newAnts[i]['progressState'] = 'complete';
         this.setState({ants: newAnts});
         return newAnts[i];
       })
