@@ -1,7 +1,7 @@
 .bar {
   width: 710px;
   height: 10px;
-  border: 1px solid black;
+  border: 1px solid #949494;
   border-radius: 5px;
   padding: 3px;
   margin-bottom: 10px;
@@ -9,12 +9,12 @@
 }
 
 .inner-bar {
-  width: 5%;
   height: 100%;
-  background-color: lightgreen;
+  background: linear-gradient(#7CFC3C, #5CDC2C);
   border-radius: 2px;
+  transition: width 1s;
 }
 
 .progress {
-  font-size: 30px;
+  text-align: center;
 }
