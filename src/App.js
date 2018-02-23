@@ -17,16 +17,18 @@ class App extends Component {
       ants: [],
       totalProgress: 5,
       progressState: 'calculate',
+      dafaultAnts: [],
     }
     this.fetch = this.fetch.bind(this);
     this.promisifyLikelihoodGeneration = this.promisifyLikelihoodGeneration.bind(this);
+    // this.calculate = this.calculate.bind(this);
   }
 
   fetch() {
     fetch({
       query: '{ ants { name weight length color }}',
     }).then(res => {
-      this.setState({ants: res.data.ants});
+      this.setState({ants: res.data.ants, defaultAnts: res.data.ants});
     });
   }
 
@@ -34,52 +36,56 @@ class App extends Component {
     this.fetch();
   }
 
+  // calculate() {
+  //   this.setState({totalProgress: 15, progressState: 'in progress', ants: this.state.defaultAnts}, () => {
+  //     this.promisifyLikelihoodGeneration();
+  //   });
+  // }
+
   promisifyLikelihoodGeneration() {
-  this.setState({totalProgress: 15, progressState: 'in progress'})
-  //create array of promises for promise.all
-  let promises = [];
-  // increase the percentage on button bar based on array size
-  let progressIncrease = 85 / this.state.ants.length;
+    this.setState({totalProgress: 15, progressState: 'in progress'})
+      //create array of promises for promise.all
+      let promises = [];
+      // increase the percentage on button bar based on array size
+      let progressIncrease = 85 / this.state.ants.length;
 
-  this.state.ants.forEach((ant, i) => { 
-    // set data for progress bar and progress state 
-    let newAntsProgress = [...this.state.ants];
-    newAntsProgress[i]['progress'] = 20;
-    newAntsProgress[i]['progressState'] = 'in progress';
-    this.setState({ants:newAntsProgress});
+      this.state.ants.forEach((ant, i) => { 
+        // set data for progress bar and progress state 
+        let newAntsProgress = [...this.state.ants];
+        newAntsProgress[i]['progress'] = 20;
+        newAntsProgress[i]['progressState'] = 'in progress';
+        this.setState({ants:newAntsProgress});
 
-    //create promise
-    const pinkyPromise = new Promise((resolve, reject) => {
-      generateAntWinLikelihoodCalculator()(resolve);
-    })
-      .then((data)=>{
-        // set likelihood and create progress state and percentage for individual ants
-        let newAnts = this.state.ants;
-        let currentAnt;
-        newAnts[i]['likelihood'] = Math.round(data * 100);
-        newAnts[i]['progress'] = 100;
-        newAnts[i]['progressState'] = 'complete';
-        this.setState({ants: newAnts, totalProgress: this.state.totalProgress + progressIncrease})
-        
-        // resolve with progress and likelihood data
-        return newAnts[i];
-      })
-    promises.push(pinkyPromise);
-  });
-  
-  Promise.all(promises)
-    .then((values) => {
-      // sort by likelihood of win
-      // values = values.sort((a,b)=>{
-      //   return a.likelihood < b.likelihood
-      // })
-      // update total progress
-      this.setState({ants: values, totalProgress: 100, progressState: 'complete'})
-    })
-    .catch((error) => {
-      console.log(error)
-    })
-}
+        //create promise
+        const pinkyPromise = new Promise((resolve, reject) => {
+          generateAntWinLikelihoodCalculator()(resolve);
+        })
+          .then((data)=>{
+            // set likelihood and create progress state and percentage for individual ants
+            let newAnts = this.state.ants;
+            newAnts[i]['likelihood'] = Math.round(data * 100);
+            newAnts[i]['progress'] = 100;
+            newAnts[i]['progressState'] = 'complete';
+            this.setState({ants: newAnts, totalProgress: this.state.totalProgress + progressIncrease})
+            
+            // resolve with progress and likelihood data
+            return newAnts[i];
+          })
+        promises.push(pinkyPromise);
+      });
+      
+      Promise.all(promises)
+        .then((values) => {
+          values = values.sort((a,b)=>{
+            return a.likelihood < b.likelihood
+          })
+          this.setState({ants: values, totalProgress: 100, progressState: 'complete'})
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+
+  }
 
   render() {
     return (

@@ -3,9 +3,7 @@ import Card from '../ant-card/card/card';
 import FlipMove from 'react-flip-move';
 
 const AntList = (props) => {
-  const list = props.ants.sort((a,b)=>{
-    return a.likelihood < b.likelihood
-  }).map((ant, i) => {
+  const list = props.ants.map((ant, i) => {
     return (
       <div key={ant.name + i.toString()}>
         <Card 
