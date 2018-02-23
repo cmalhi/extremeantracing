@@ -9,3 +9,7 @@ To run a local instance run ```npm install``` then ```npm start```
 ## Screenshot
 
 ![](images/antracing.png?raw=true)
+
+## Gif
+
+![](images/antgif.gif?raw=true)
