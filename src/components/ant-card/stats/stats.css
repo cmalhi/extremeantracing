@@ -1,0 +1,17 @@
+.stats-container {
+  display: flex;
+  justify-content: space-around;
+  padding-left: 60px;
+  padding-right: 60px;
+}
+
+.title {
+  text-align: left;
+  font-size: 18px;
+  color: black;   
+}
+
+.entry {
+  text-align: left;
+  font-size: 30px;
+}
