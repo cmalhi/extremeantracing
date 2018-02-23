@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import Card from './components/ant-card/card';
+import Card from './components/ant-card/card/card';
 import ButtonBar from './components/bar/button-bar/button-bar';
-import ProgressBar from './components/bar/progress-bar/progress-bar';
 
 const sampleData = [
       {
@@ -41,8 +40,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <ButtonBar />
         <Card name={sampleData[0].name} weight={sampleData[0].weight} color={sampleData[0].color} length={sampleData[0].length} />
+        <ButtonBar />
       </div>
     );
   }
