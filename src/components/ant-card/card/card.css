@@ -3,6 +3,7 @@
   width: 720px;
   border: 1px solid #949494;
   background-color: #334;
+  box-shadow: 8px 8px rgba(62,62,62, .17);
   border-radius: 5px;
   padding: 20px;
   margin: auto;
