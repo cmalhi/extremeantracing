@@ -41,9 +41,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Card name={sampleData[0].name} weight={sampleData[0].weight} color={sampleData[0].color} length={sampleData[0].length} />
         <ButtonBar />
-        <ProgressBar />
+        <Card name={sampleData[0].name} weight={sampleData[0].weight} color={sampleData[0].color} length={sampleData[0].length} />
       </div>
     );
   }

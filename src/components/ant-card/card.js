@@ -1,5 +1,6 @@
 import React from 'react';
-import './card.css'
+import './card.css';
+import ProgressBar from '../bar/progress-bar/progress-bar';
 
 const Card = (props) => {
   return ( 
@@ -16,6 +17,7 @@ const Card = (props) => {
 	      <div className="title">likelihood</div>
 	      <div className="entry">0%</div>
 	    </div>
+	    <ProgressBar />
      </div>
   );
 }
