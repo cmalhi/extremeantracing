@@ -35,21 +35,31 @@ class App extends Component {
   }
 
   promisifyLikelihoodGeneration() {
-  console.log('clicked')
   this.setState({totalProgress: 15, progressState: 'in progress'})
   //create array of promises for promise.all
   let promises = [];
-  let progressIncrease = 85 / this.state.ants.length
+  // increase the percentage on button bar based on array size
+  let progressIncrease = 85 / this.state.ants.length;
+
   this.state.ants.forEach((ant, i) => { 
+
+    // set data for progress bar and progress state 
+    let newAntsProgress = [...this.state.ants];
+    newAntsProgress[i]['progress'] = 20;
+    newAntsProgress[i]['progressState'] = 'in progress';
+    this.setState({ants:newAntsProgress});
+
+    //create promise
     const pinkyPromise = new Promise((resolve, reject) => {
       generateAntWinLikelihoodCalculator()(resolve);
     })
       .then((data)=>{
+        // set likelihood and create progress state and percentage for individual ants
         let newAnts = this.state.ants;
         newAnts[i]['likelihood'] = Math.round(data * 100);
         newAnts[i]['progress'] = 100;
         newAnts[i]['progressState'] = 'complete';
-        this.setState({ants: newAnts});
+        this.setState({ants: newAnts, totalProgress: this.state.totalProgress + progressIncrease})
         return newAnts[i];
       })
     promises.push(pinkyPromise);
