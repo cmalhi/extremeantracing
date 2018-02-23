@@ -68,9 +68,11 @@ class App extends Component {
   
   Promise.all(promises)
     .then((values) => {
+      // sort by likelihood of win
       values = values.sort((a,b)=>{
         return a.likelihood < b.likelihood
       })
+      // update total progress
       this.setState({ants: values, totalProgress: 100, progressState: 'complete'})
     })
     .catch((error) => {

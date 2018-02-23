@@ -1,5 +1,6 @@
 import React from 'react';
 import Card from '../ant-card/card/card';
+import FlipMove from 'react-flip-move';
 
 const AntList = (props) => {
 
@@ -20,7 +21,9 @@ const AntList = (props) => {
   });
   return ( 
     <div >
+      <FlipMove duration={750} easing="ease-out">
         {list}
+      </FlipMove>
     </div>
   );
   

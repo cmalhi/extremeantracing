@@ -1,5 +1,6 @@
 import React from 'react';
 import './stats.css';
+import CountUp from 'react-countup';
 
 const Stats = (props) => {
   return ( 
@@ -18,7 +19,15 @@ const Stats = (props) => {
       </div>
       <div>
         <div className="title">likelihood</div>   
-        <div className="entry">{props.likelihood}%</div>
+        <div className="entry">
+          <CountUp 
+            start={0} 
+            end={props.likelihood || 0} 
+            duration={2}
+            useEasing={true}
+            suffix={'%'}
+          />
+        </div>
       </div>
     </div>
   );
